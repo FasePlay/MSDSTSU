@@ -8,6 +8,8 @@ TagManager:
   - GameUI
   - GameOverUI
   - enemy
+  - Sword
+  - Trail Point
   layers:
   - Default
   - TransparentFX

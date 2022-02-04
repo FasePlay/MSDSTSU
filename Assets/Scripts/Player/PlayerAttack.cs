@@ -31,6 +31,9 @@ public class PlayerAttack : MonoBehaviour
     {
         // animate
         swordAnimator.SetTrigger("Attack");
+        GameObject.FindGameObjectWithTag("Sword").GetComponent<TrailRenderer>().enabled = true;
+        GameObject.FindGameObjectWithTag("Trail Point").GetComponent<TrailRenderer>().enabled = true;
+        Invoke("DisableTrails", 2);
 
         // detect enemies
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
@@ -41,6 +44,7 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("We hit " + enemy.name);
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage, transform.position);
         }
+
     }
 
 
@@ -50,5 +54,11 @@ public class PlayerAttack : MonoBehaviour
             return;
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    private void DisableTrails()
+    {
+        GameObject.FindGameObjectWithTag("Sword").GetComponent<TrailRenderer>().enabled = false;
+        GameObject.FindGameObjectWithTag("Trail Point").GetComponent<TrailRenderer>().enabled = false;
     }
 }
