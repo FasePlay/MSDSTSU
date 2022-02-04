@@ -3262,6 +3262,10 @@ PrefabInstance:
       propertyPath: shieldAnimator
       value: 
       objectReference: {fileID: 241762517}
+    - target: {fileID: 1914776009728820629, guid: 9ff285ad4da0c6d40b8c034baa8a8d46, type: 3}
+      propertyPath: attackRange
+      value: 0.95
+      objectReference: {fileID: 0}
     - target: {fileID: 1914776009728820713, guid: 9ff285ad4da0c6d40b8c034baa8a8d46, type: 3}
       propertyPath: m_RootOrder
       value: 2
