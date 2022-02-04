@@ -10,7 +10,7 @@ public class Pause : MonoBehaviour
     string[] funFacts = {"the total budget of the game is 12 cents", 
         "we are all going to die some day and there is no way to fool Death itself",
         "The \"Shrek\" movie is banned in Nepal",
-        "Chocolate milkl comes from brown cows ",
+        "Chocolate milk comes from brown cows ",
         "who reads these anyways",
         "donating to Team Seas increases your chances at winning the game",
         "the pythagoreas theorem is a^2+b^2=c^2, which is just the cosine theorem in a rare case",
