@@ -1,4 +1,4 @@
- using UnityEngine;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,21 +9,28 @@ public class PlayerMovement : MonoBehaviour
     // Animation
     [SerializeField] private Animator animator;
     public bool isWalking = false;
+
+    //Dashing
+    private bool isDashing = false;
+    [SerializeField] private float DashCooldown = 3.5f;
+    public float NextDashIn = 0;
+    private Vector2 Direction;
+    public Transform cam;
+    [SerializeField] float dashSpeed = 10.0f;
     void FixedUpdate()
     {
         MovePlayer();
         AnimatePlayerMovement();
+        DashCheck();
     }
-
 
     void AnimatePlayerMovement()
     {
         // Animation
         if (Input.GetAxisRaw("Horizontal") != 0) //if we are moving horizontally
             animator.SetBool("isWalking", true); //enable animation
-        else 
+        else
             animator.SetBool("isWalking", false); //disable animation
-
         // Rotation
         if (Input.mousePosition.x < rb.position.x + (Screen.width / 2)) transform.localScale = new Vector3(-1, 1, 1);
         else transform.localScale = new Vector3(1, 1, 1);
@@ -36,5 +43,14 @@ public class PlayerMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime); // Actually moving player
+    }
+    private void DashCheck()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && NextDashIn <= Time.time)
+        {
+            Vector2.MoveTowards(transform.position, cam.position, Time.deltaTime);
+            NextDashIn = Time.time + DashCooldown;
+            print($"next dash: {NextDashIn}, time: {Time.time}");
+        }
     }
 }

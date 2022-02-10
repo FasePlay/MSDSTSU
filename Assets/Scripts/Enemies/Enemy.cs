@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("damaged");
 
         this.GetComponent<Rigidbody2D>().AddForce((transform.position - playerPosition).normalized * 10);
-        Debug.Log(transform.position - playerPosition);
+        print(transform.position - playerPosition);
 
 
         // hurt animation
@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
 
         // DIsable enemy
 
-        Debug.Log("Enemy died");
+        print("Enemy died");
         animator.SetBool("dead", true);
         GetComponent<Collider2D>().enabled = false;
         enabled = false;
