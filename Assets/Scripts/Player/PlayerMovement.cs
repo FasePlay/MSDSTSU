@@ -19,9 +19,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float dashSpeed = 10.0f;
     void FixedUpdate()
     {
+        DashCheck();
         MovePlayer();
         AnimatePlayerMovement();
-        DashCheck();
     }
 
     void AnimatePlayerMovement()
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && NextDashIn <= Time.time)
         {
-            Vector2.MoveTowards(transform.position, cam.position, Time.deltaTime);
+            Vector2.MoveTowards(transform.position, cam.position, dashSpeed*Time.deltaTime);
             NextDashIn = Time.time + DashCooldown;
             print($"next dash: {NextDashIn}, time: {Time.time}");
         }

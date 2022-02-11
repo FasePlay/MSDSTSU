@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraFollowPlayer : MonoBehaviour
 {
     public Transform player;
-    [SerializeField] private Vector3 offset;
+    public Vector3 offset;
     private Vector3 mousePosition;
 
     void Update()
