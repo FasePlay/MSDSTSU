@@ -14,43 +14,38 @@ public class PlayerHealth : MonoBehaviour
     public GameOver gameOver;
 
     bool Shield = true;
-    bool invincible;
+    bool invincible = false;
 
     private void OnCollisionStay2D(Collision2D collisionInfo)
     {
-        if (!invincible)
+        if (invincible)
         {
-            if (collisionInfo.gameObject.tag == "Enemy")
-            {
-
-                if (Shield)
-                {
-                    shieldAnimator.SetBool("damaged", true);
-                    playerAnimator.SetTrigger("damaged");
-                    Shield = false;
-                    invincible = true;
-                    Invoke("ShieldInvoke", shieldTimer);
-                    Invoke("DisableInvincibility", invincibilityTimer);
-                    heart.GetComponent<RawImage>().enabled = true;
-                }
-                else
-                {
-                    playerAnimator.SetBool("dead", true);
-                    gameOver.EndGame();
-                }
-            }
+            return;
         }
-    }
+        else if (!collisionInfo.collider.CompareTag("Enemy"))
+        {
+            return;
+        }
+        else if (Shield)
+        {
+            Shield = false;
+            invincible = true;
+            shieldAnimator.SetBool("damaged",true);
+            playerAnimator.SetTrigger("damaged");
+            Invoke("ShieldInvoke", shieldTimer);
+            Invoke("invincible = false;", invincibilityTimer);
+        }
+        else
+        {
+            playerAnimator.SetBool("dead", true);
+            gameOver.EndGame();
+        }
 
+    }
     private void ShieldInvoke()
     {
         Shield = true;
         shieldAnimator.SetBool("damaged", false);
-    }
-
-    private void DisableInvincibility()
-    {
-        invincible = false;
     }
 }
 

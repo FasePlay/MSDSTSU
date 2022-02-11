@@ -22,7 +22,7 @@ public class Pause : MonoBehaviour
     public void GamePause()
     {
         GamePaused = !GamePaused;
-        Debug.Log(GamePaused);
+        print(GamePaused);
         if (GamePaused == false)
         {
             Time.timeScale = 0; 
@@ -37,10 +37,9 @@ public class Pause : MonoBehaviour
     }
     //returns a random fact
 
-    string[] Facts (string[] funFacts)
+    string[] Facts()
     {
         factsText.text = funFacts[Random.Range(0, funFacts.Length)];
         return funFacts;
     }
-    
 }

@@ -10,6 +10,7 @@ TagManager:
   - enemy
   - Sword
   - Trail Point
+  - goldKey
   layers:
   - Default
   - TransparentFX

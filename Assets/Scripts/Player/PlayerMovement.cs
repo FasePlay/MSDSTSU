@@ -14,8 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing = false;
     [SerializeField] private float DashCooldown = 3.5f;
     public float NextDashIn = 0;
-    private Vector2 Direction;
-    public Transform cam;
+    [SerializeField] private Transform cam;
     [SerializeField] float dashSpeed = 10.0f;
     void FixedUpdate()
     {
@@ -46,10 +45,10 @@ public class PlayerMovement : MonoBehaviour
     }
     private void DashCheck()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && NextDashIn <= Time.time)
+        if (Input.GetKeyDown(KeyCode.LeftShift)) //&& NextDashIn <= Time.time)
         {
             Vector2.MoveTowards(transform.position, cam.position, dashSpeed*Time.deltaTime);
-            NextDashIn = Time.time + DashCooldown;
+            //NextDashIn = Time.time + DashCooldown;
             print($"next dash: {NextDashIn}, time: {Time.time}");
         }
     }
