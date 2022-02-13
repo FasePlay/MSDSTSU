@@ -12,6 +12,7 @@ TagManager:
   - Trail Point
   - goldKey
   - doorGold
+  - coinSmall
   layers:
   - Default
   - TransparentFX

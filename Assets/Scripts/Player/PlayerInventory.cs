@@ -5,14 +5,17 @@ public class PlayerInventory : MonoBehaviour
     //inventory items
     [SerializeField] private int goldKeys = 0;
     [SerializeField] private int silverKeys = 0;
+    public int gold = 0;
+    
+    
     public DoorSpriteSwap DoorSpriteSwap;
     //animators and sprites for picked up stuff
     //keys 
     public Animator keyAnimator;
-    //doors are in doorSpriteSwap.cs
+    public BoxCollider2D goldKeyCol;
+    //coins
+    [SerializeField] private Animator coinSmall;
 
-    
-    public GameObject goldKey;
     private void OnTriggerEnter2D(Collider2D col)
     {
         switch (col.tag)
@@ -21,7 +24,7 @@ public class PlayerInventory : MonoBehaviour
                 {
                     goldKeys++;
                     keyAnimator.SetBool("isPickedUp", true);
-                    goldKey.GetComponent<BoxCollider2D>().enabled = false;
+                    goldKeyCol.enabled = false;
                     break;
                 }
             case "silverKey":
@@ -37,6 +40,12 @@ public class PlayerInventory : MonoBehaviour
                         DoorSpriteSwap.DoorOpenAnim();
                     }
                     else print("u got no keys");
+                    break;
+                }
+            case "coinSmall":
+                {
+                    gold++;
+                    coinSmall.SetBool("isCollected", true);
                     break;
                 }
             default:
