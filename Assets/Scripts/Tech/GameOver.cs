@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
-    [SerializeField] GameObject GameUI;
-    [SerializeField] GameObject GameOverUI;
-    [SerializeField] GameObject player;
+    [SerializeField] private GameObject GameUI;
+    [SerializeField] private GameObject GameOverUI;
+    [SerializeField] private GameObject player;
 
     private void Start()
     {
@@ -15,9 +15,10 @@ public class GameOver : MonoBehaviour
     }
     public void EndGame()
     {
-        Debug.Log("Gaim ovr");
-        Debug.Log(GameObject.FindGameObjectWithTag("GameOverUI"));
-        player.SetActive(false);
+        print("Gaim ovr");
+        print(GameObject.FindGameObjectWithTag("GameOverUI"));
         
+        player.SetActive(false);
+        //replace this ^ with an animation
     }
 }

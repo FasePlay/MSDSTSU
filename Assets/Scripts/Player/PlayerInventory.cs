@@ -5,14 +5,15 @@ public class PlayerInventory : MonoBehaviour
     //inventory items
     [SerializeField] private int goldKeys = 0;
     [SerializeField] private int silverKeys = 0;
+    public DoorSpriteSwap DoorSpriteSwap;
+    //animators and sprites for picked up stuff
+    //keys 
     public Animator keyAnimator;
+    //doors are in doorSpriteSwap.cs
+
+    
     public GameObject goldKey;
-    public int playerInput = 1;
-
-    //player stats
-    public int playerLevel = 1;
-
-    public void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         switch (col.tag)
         {
@@ -26,6 +27,16 @@ public class PlayerInventory : MonoBehaviour
             case "silverKey":
                 {
                     silverKeys++;
+                    break;
+                }
+            case "doorGold":
+                {
+                    if (goldKeys != 0)
+                    {
+                        goldKeys--;
+                        DoorSpriteSwap.DoorOpenAnim();
+                    }
+                    else print("u got no keys");
                     break;
                 }
             default:
