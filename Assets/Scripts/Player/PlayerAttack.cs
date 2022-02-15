@@ -33,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
         swordAnimator.SetTrigger("Attack");
         GameObject.FindGameObjectWithTag("Sword").GetComponent<TrailRenderer>().enabled = true;
         GameObject.FindGameObjectWithTag("Trail Point").GetComponent<TrailRenderer>().enabled = true;
-        Invoke("DisableTrails", 2);
+        Invoke("DisableTrails", 1.5f);
 
         // detect enemies
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
