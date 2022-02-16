@@ -6,19 +6,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 5f; //скорость передвижения
     [SerializeField] private Rigidbody2D rb;
     private Vector2 movement;
+
     // Animation
     [SerializeField] private Animator animator;
     public bool isWalking = false;
 
-    //Dashing
-    private bool isDashing = false;
-    [SerializeField] private float DashCooldown = 3.5f;
-    public float NextDashIn = 0;
-    [SerializeField] private Transform cam;
-    [SerializeField] float dashSpeed = 10.0f;
+    // Dashing
+    // private bool isDashing = false;
+    // [SerializeField] private float DashCooldown = 3.5f;
+    // public float NextDashIn = 0;
+    // [SerializeField] private Transform cam;
+    // [SerializeField] float dashSpeed = 10.0f;
     void FixedUpdate()
     {
-        DashCheck();
+        // Dash();
         MovePlayer();
         AnimatePlayerMovement();
     }
@@ -43,13 +44,13 @@ public class PlayerMovement : MonoBehaviour
 
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime); // Actually moving player
     }
-    private void DashCheck()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftShift)) //&& NextDashIn <= Time.time)
-        {
-            Vector2.MoveTowards(transform.position, cam.position, dashSpeed*Time.deltaTime);
-            //NextDashIn = Time.time + DashCooldown;
-            print($"next dash: {NextDashIn}, time: {Time.time}");
-        }
-    }
+    // private void Dash()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.LeftShift)) //&& NextDashIn <= Time.time)
+    //     {
+    //         Vector2.MoveTowards(transform.position, cam.position, dashSpeed*Time.deltaTime);
+    //         //NextDashIn = Time.time + DashCooldown;
+    //         print($"next dash: {NextDashIn}, time: {Time.time}");
+    //     }
+    // }
 }
