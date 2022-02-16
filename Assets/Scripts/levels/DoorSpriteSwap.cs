@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class DoorSpriteSwap : MonoBehaviour
 {
-    public SpriteRenderer SpRender;
     //sprites for the door
     public Sprite open;
-    [SerializeField] private Sprite closed;
-    
+    public Sprite closed;
+    public SpriteRenderer SpRender;
+
+    //animator, DUH
     public Animator doorAnim;
-    //collider turns off when the door is open
+    
+    //collider turns off when the door is open, so we can go through
     public BoxCollider2D col;
 
     //initialising states
@@ -18,7 +20,7 @@ public class DoorSpriteSwap : MonoBehaviour
         col.enabled = true;
     }
     //called by PlayerInventory
-    public void DoorOpenAnim()
+    public void DoorOpen()
     {
         doorAnim.SetBool("isOpen", true);
         Invoke("DoorOpenSprite", 0.05f);

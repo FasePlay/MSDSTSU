@@ -5,7 +5,6 @@ public class Enemy : MonoBehaviour
     public int maxHealth = 100;
     private int currentHealth;
     [SerializeField] Animator animator;
-    // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;

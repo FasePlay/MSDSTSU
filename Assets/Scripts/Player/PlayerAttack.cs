@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -10,10 +8,7 @@ public class PlayerAttack : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 1f;
     public LayerMask enemyLayers;
-
     public int attackDamage = 15;
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))

@@ -6,10 +6,8 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private int goldKeys = 0;
     [SerializeField] private int silverKeys = 0;
     public int gold = 0;
-    
-    
-    public DoorSpriteSwap DoorSpriteSwap;
     //animators and sprites for picked up stuff
+    [SerializeField] DoorSpriteSwap door;
     //keys 
     public Animator keyAnimator;
     public BoxCollider2D goldKeyCol;
@@ -25,6 +23,7 @@ public class PlayerInventory : MonoBehaviour
                     goldKeys++;
                     keyAnimator.SetBool("isPickedUp", true);
                     goldKeyCol.enabled = false;
+                    //will remake similarly to doors
                     break;
                 }
             case "silverKey":
@@ -36,10 +35,9 @@ public class PlayerInventory : MonoBehaviour
                 {
                     if (goldKeys != 0)
                     {
+                        door.DoorOpen();
                         goldKeys--;
-                        DoorSpriteSwap.DoorOpenAnim();
-                    }
-                    else print("u got no keys");
+                    }                
                     break;
                 }
             case "coinSmall":
